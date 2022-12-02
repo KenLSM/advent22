@@ -1,0 +1,4 @@
+{
+    "editor.formatOnSave": true,
+    "clang-format.executable": "${workspaceRoot}/node_modules/.bin/clang-format"
+}
