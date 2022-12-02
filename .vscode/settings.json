@@ -1,4 +1,10 @@
 {
     "editor.formatOnSave": true,
-    "clang-format.executable": "${workspaceRoot}/node_modules/.bin/clang-format"
+    "clang-format.executable": "${workspaceRoot}/node_modules/.bin/clang-format",
+    "files.associations": {
+        "ostream": "cpp",
+        "vector": "cpp",
+        "iostream": "cpp",
+        "functional": "cpp"
+    }
 }
