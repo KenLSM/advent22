@@ -1,16 +1,18 @@
 #include <bits/stdc++.h>
-
+#define pii pair<int, int>
 using namespace std;
 
 unordered_set<string> seen;
-pair<int, int> head;
-pair<int, int> tail;
+unordered_set<string> seen2;
+vector<pii> knots;
+// pair<int, int> head;
+// pair<int, int> tail;
 
-int calManhattenDis() {
+int calManhattenDis(pii &head, pii &tail) {
 	return abs(head.first - tail.first) + abs(head.second - tail.second);
 }
 
-void moveHead(char direction) {
+void moveHead(pii &head, char direction) {
 	switch (direction) {
 	case 'L': {
 		head.first--;
@@ -31,13 +33,14 @@ void moveHead(char direction) {
 	}
 }
 
-void moveTail() {
-	int matDis = calManhattenDis();
+// void moveTail() {}
+void moveTail(pii &head, pii &tail) {
+	int matDis = calManhattenDis(head, tail);
 	if (matDis <= 1) {
 		// tail doesn't have to move
 		return;
 	}
-	printf("Need to move tail\n");
+	// printf("Need to move tail\n");
 
 	if (matDis == 2) {
 		int dir_lr = head.first - tail.first;
@@ -82,8 +85,11 @@ string toHash(pair<int, int> p) {
 	sprintf(s, "(%d,%d)", p.first, p.second);
 	return s;
 }
-void recordTail() {
+void recordTail(pii &tail) {
 	seen.insert(toHash(tail));
+}
+void recordTail2(pii &tail) {
+	seen2.insert(toHash(tail));
 }
 
 void printSeen() {
@@ -92,17 +98,25 @@ void printSeen() {
 	}
 	printf("-----\n");
 }
+
 int main() {
-	head = pair<int, int>(0, 0);
-	tail = pair<int, int>(0, 0);
+	for (int i = 0; i < 10; i++) {
+		knots.push_back(pii(0, 0));
+	}
+	// head = pair<int, int>(0, 0);
+	// tail = pair<int, int>(0, 0);
 	while (true) {
 		char direction;
 		int steps;
 		cin >> direction >> steps;
 		while (steps--) {
-			moveHead(direction);
-			moveTail();
-			recordTail();
+			moveHead(knots[0], direction);
+			for (int i = 0; i < 9; i++) {
+				moveTail(knots[i], knots[i + 1]);
+			}
+			// moveTail(knots[0], knots[1]);
+			recordTail(knots[1]);
+			recordTail2(knots[9]);
 		}
 
 		if (cin.eof()) {
@@ -111,5 +125,6 @@ int main() {
 	}
 	printSeen();
 	printf("Ans1: %ld\n", seen.size());
+	printf("Ans2: %ld\n", seen2.size());
 	return 1;
 }
