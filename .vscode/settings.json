@@ -1,12 +1,24 @@
 {
-    "editor.formatOnSave": true,
-    "clang-format.executable": "${workspaceRoot}/node_modules/.bin/clang-format",
-    "files.associations": {
-        "ostream": "cpp",
-        "vector": "cpp",
-        "iostream": "cpp",
-        "functional": "cpp",
-        "string": "cpp",
-        "string_view": "cpp"
-    }
+  "editor.formatOnSave": true,
+  "clang-format.executable": "${workspaceRoot}/node_modules/.bin/clang-format",
+  "files.associations": {
+    "ostream": "cpp",
+    "vector": "cpp",
+    "iostream": "cpp",
+    "functional": "cpp",
+    "string": "cpp",
+    "string_view": "cpp",
+    "istream": "cpp",
+    "*.tcc": "cpp",
+    "complex": "cpp",
+    "valarray": "cpp",
+    "utility": "cpp",
+    "unordered_set": "cpp",
+    "deque": "cpp",
+    "list": "cpp",
+    "map": "cpp",
+    "set": "cpp",
+    "unordered_map": "cpp",
+    "queue": "cpp"
+  }
 }
